@@ -10,9 +10,9 @@ class TodoController extends Controller
 {
     public function index() //トップページの表示
     {
-        $items = DB::select('select * from todos'); //DB::select　がデータベースの中から取り出す処理
-        //()の中はSQL分を記述することで値を取得できる
-        return view('index', ['items' => $items]);
+        $todos = Todo::orderBy('created_at', 'desc')->get();
+
+        return view('index', ['todos' => $todos]);
     }
 
     public function create(Request $request)
@@ -21,6 +21,12 @@ class TodoController extends Controller
             'content' => $request->content
         ]);
 
+        return redirect()->route('todo.init');
+    }
+
+    public function delete(Request $request)
+    {
+        Todo::find($request->id)->delete();
         return redirect()->route('todo.init');
     }
     

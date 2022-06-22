@@ -43,6 +43,14 @@
     border-radius: 3px;
     border: 2px solid #A978AC
   }
+
+  tbody {
+    font-weight: nomal;
+  }
+
+  tbody tr th {
+    margin-right: 5em;
+  }
   
   </style>
 </head>
@@ -53,7 +61,7 @@
       <div class="todo__area">
         <form action="/todo/create" method="POST" class="flex__item">
           @csrf
-          <input type="text" name="text" class="add__todo">
+          <input type="text" name="content" class="add__todo">
           <button type="submit" class="add__btn" formaction="{{route('todo.create')}}">追加</button>
         </form>
 
@@ -66,6 +74,16 @@
               <th>削除</th>
             </tr>
           </thead>
+          @foreach($todos as $todo)
+          <tbody>
+            <tr>
+              <th>{{$todo->created_at->format('Y/m/d H:i:s')}}</th>
+              <th>{{$todo->content}}</th>
+              <th></th>
+              <th><button type="submit" formaction="{{route('todo.delete')}}">削除</button></th>
+            </tr>
+          </tbody>
+          @endforeach
         </table>
       </div>
     </div>
