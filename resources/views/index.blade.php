@@ -80,7 +80,12 @@
               <th>{{$todo->created_at->format('Y/m/d H:i:s')}}</th>
               <th>{{$todo->content}}</th>
               <th></th>
-              <th><button type="submit" formaction="{{route('todo.delete')}}">削除</button></th>
+              <th>
+                <form action="{{route('todo.delete}, ['id'=>$todo->todo_id])}" method="POST">
+                  @csrf
+                  <button type="submit" class="delete_btn">削除</button>
+                </form>
+              </th>
             </tr>
           </tbody>
           @endforeach
