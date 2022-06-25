@@ -86,6 +86,7 @@
                 <form action="{{route('todo.update')}}" method="POST">
                   @csrf
                   <input type="hidden" name="id" value="{{$todo->id}}">
+                  <input type="hidden" name="id" value="{{$todo->content}}">
                   <button type="submit" class="update_btn">更新</button>
                 </form>
               </th>
