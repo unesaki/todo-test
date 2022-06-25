@@ -79,14 +79,16 @@
             <tr>
               <th>{{$todo->created_at->format('Y/m/d H:i:s')}}</th>
               <th>
-                <input type="text" value="{{$todo->content}}">
+                <form action="{{route('todo.update')}}" method="POST">
+                  @csrf
+                  <input type="text" name="content" value="{{$todo->content}}">
+                  </form>
                 </th>
-                </form>
               <th>
                 <form action="{{route('todo.update')}}" method="POST">
                   @csrf
                   <input type="hidden" name="id" value="{{$todo->id}}">
-                  <input type="hidden" name="id" value="{{$todo->content}}">
+                  
                   <button type="submit" class="update_btn">更新</button>
                 </form>
               </th>

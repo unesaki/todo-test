@@ -27,6 +27,7 @@ class TodoController extends Controller
     public function update(Request $request)
     {
         $todo = Todo::find($request->id); //todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
+        
         $todo->update(['content' => $request->content]); // ←ここが上手くいっていない
         return redirect()->route('todo.init'); //画面を戻す処理
     }
