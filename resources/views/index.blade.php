@@ -78,11 +78,21 @@
           <tbody>
             <tr>
               <th>{{$todo->created_at->format('Y/m/d H:i:s')}}</th>
-              <th>{{$todo->content}}</th>
-              <th></th>
               <th>
-                <form action="{{route('todo.delete}, ['id'=>$todo->todo_id])}" method="POST">
+                <input type="text" value="{{$todo->content}}">
+                </th>
+                </form>
+              <th>
+                <form action="{{route('todo.update')}}" method="POST">
                   @csrf
+                  <input type="hidden" name="id" value="{{$todo->id}}">
+                  <button type="submit" class="update_btn">更新</button>
+                </form>
+              </th>
+              <th>
+                <form action="{{route('todo.delete')}}" method="POST">
+                  @csrf
+                  <input type="hidden" name="id" value="{{$todo->id}}">
                   <button type="submit" class="delete_btn">削除</button>
                 </form>
               </th>

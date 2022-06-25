@@ -24,10 +24,17 @@ class TodoController extends Controller
         return redirect()->route('todo.init');
     }
 
-    public function delete(Request $request)
+    public function update(Request $request)
     {
         $todo = Todo::find($request->id);
-        $todo->delete();
+        $todo->update(['content' => $request->conrent]);
+        return redirect()->route('todo.init');
+    }
+
+    public function delete(Request $request)
+    {
+        $todo = Todo::find($request->id); //todoテーブルから指定されたIDレコードを取ってくる
+        $todo->delete(); 
         return redirect()->route('todo.init');
     }
     
