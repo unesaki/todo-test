@@ -279,6 +279,11 @@ table tbody tr th {
     <div class="container">
       <h1>Todo List</h1>
       <div class="todo__area">
+        @if ($errors->has('content'))
+          @foreach($errors->get('content') as $message)
+            {{$message}}<br>
+          @endforeach
+        @endif
         <form action="/todo/create" method="POST" class="flex__item">
           @csrf
           <input type="text" name="content" class="add__todo">
