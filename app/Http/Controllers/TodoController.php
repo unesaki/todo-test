@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;  //DBとしてDBクラスを利用できる
 use App\Models\Todo;
-use Validator;
+use App\Http\Requests\ClientRequest;
 
 class TodoController extends Controller
 {
@@ -38,19 +38,5 @@ class TodoController extends Controller
         $todo = Todo::find($request->id); //todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
         $todo->delete(); //上記のものを削除
         return redirect()->route('todo.init'); //画面を戻す処理
-    }
-    
-    public function postValidates(Request $request)
-    {
-        $request->validate([
-            'content' => 'required | max:20',
-        ],
-        [
-            'content.required' => 'Todoは必須です。',
-            'content.max' => '20文字以下で入力してください。'
-        ]);
-
-        
-
     }
 }
