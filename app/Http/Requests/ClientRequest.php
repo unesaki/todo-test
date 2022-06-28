@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
             'content' => 'required | max:20',
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
             'content.required' => 'Todoを入力してください',
