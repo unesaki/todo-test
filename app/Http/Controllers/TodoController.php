@@ -16,7 +16,7 @@ class TodoController extends Controller
         return view('index', ['todos' => $todos]);
     }
 
-    public function create(Request $request)
+    public function create(ClientRequest $request) //引数を変更してみる
     {
         Todo::create([
             'content' => $request->content
@@ -25,9 +25,9 @@ class TodoController extends Controller
         return redirect()->route('todo.init');
     }
 
-    public function update(Request $request)
+    public function update(ClientRequest $request)
     {
-        $todo = Todo::find($request->id); //todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
+        $todo = Todo::find($request->id); //　todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
         
         $todo->update(['content' => $request->content]); // ←ここが上手くいっていない
         return redirect()->route('todo.init'); //画面を戻す処理
@@ -35,7 +35,7 @@ class TodoController extends Controller
 
     public function delete(Request $request)
     {
-        $todo = Todo::find($request->id); //todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
+        $todo = Todo::find($request->id); //　todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
         $todo->delete(); //上記のものを削除
         return redirect()->route('todo.init'); //画面を戻す処理
     }

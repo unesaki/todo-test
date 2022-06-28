@@ -13,10 +13,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->parh() == '/') {
-            return true;
-        } else {
-        return false;
+        return true;
     }
 
     /**
