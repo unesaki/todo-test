@@ -271,6 +271,37 @@ table tbody tr th {
   font-weight: normal;
 }
 /**css ここまで */
+
+@media screen and (max-width: 390px) {
+  .main {
+    margin: 15% 5% auto 5%;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  .container {
+    width: 100%;
+  }
+  thead tr th:first-child {
+    display: none;
+  }
+  tbody tr th:first-child {
+    display: none;
+  }
+  .update__btn {
+    padding: 5px;
+  }
+  .delete__btn {
+    padding: 5px;
+  }
+  .add__btn {
+    padding: 5px;
+  }
+  table {
+    border-spacing: 24px 15px;
+  }
+  
+}
   </style>
 </head>
 
