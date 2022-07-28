@@ -1,362 +1,406 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/reset.css">
-  <title>Todoリスト</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>COACHTECH</title>
   <style>
-/**リセットcss ここから */
+    html,
+    body,
+    div,
+    span,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    abbr,
+    address,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    samp,
+    small,
+    strong,
+    sub,
+    sup,
+    var,
+    b,
+    i,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+    }
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
+    body {
+      line-height: 1;
+    }
 
-body {
-  line-height: 1;
-}
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
+    nav ul {
+      list-style: none;
+    }
 
-nav ul {
-  list-style: none;
-}
+    blockquote,
+    q {
+      quotes: none;
+    }
 
-blockquote,
-q {
-  quotes: none;
-}
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: "";
+      content: none;
+    }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
+    a {
+      margin: 0;
+      padding: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+      background: transparent;
+    }
 
-a {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-}
+    /* change colours to suit your needs */
+    ins {
+      background-color: #ff9;
+      color: #000;
+      text-decoration: none;
+    }
 
-/* change colours to suit your needs */
-ins {
-  background-color: #ff9;
-  color: #000;
-  text-decoration: none;
-}
+    /* change colours to suit your needs */
+    mark {
+      background-color: #ff9;
+      color: #000;
+      font-style: italic;
+      font-weight: bold;
+    }
 
-/* change colours to suit your needs */
-mark {
-  background-color: #ff9;
-  color: #000;
-  font-style: italic;
-  font-weight: bold;
-}
+    del {
+      text-decoration: line-through;
+    }
 
-del {
-  text-decoration: line-through;
-}
+    abbr[title],
+    dfn[title] {
+      border-bottom: 1px dotted;
+      cursor: help;
+    }
 
-abbr[title],
-dfn[title] {
-  border-bottom: 1px dotted;
-  cursor: help;
-}
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
+    /* change border colour to suit your needs */
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #cccccc;
+      margin: 1em 0;
+      padding: 0;
+    }
 
-/* change border colour to suit your needs */
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 1em 0;
-  padding: 0;
-}
+    input,
+    select {
+      vertical-align: middle;
+    }
 
-input,
-select {
-  vertical-align: middle;
-}
-/**リセットcss ここまで */
+    .flex {
+      display: flex;
+    }
 
-/**css ここから */
-  body {
-  background-color: #2B2871;
-}
-.main {
-  margin: 25% 20%;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #fff;
-}
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
-h1 {
-  font-size: 25px;
-  margin: 20px 0;
-}
-.flex__item {
-  display: flex;
-  margin-bottom: 15px;
-  justify-content: space-between;
-}
-.add__todo {
-  width: 80%;
-  padding: 8px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-.add__btn {
-  color: #dc70fa;
-  background-color: #fff;
-  font-weight: bold;
-  padding: 5px 15px;
-  border-radius: 3px;
-  border: 2px solid #dc70fa;
-  transition: 0.4s;
-  cursor: pointer;
-}
+    .between {
+      justify-content: space-between;
+    }
 
-.add__btn:hover {
-  background-color: #dc70fa;
-  color: #fff;
-}
+    .mb-15 {
+      margin-bottom: 15px;
+    }
 
-table {
-  border-spacing: 23px 15px;
-  border-collapse: separate;
-}
+    .mb-30 {
+      margin-bottom: 30px;
+    }
 
-.update__todo {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  width: 100%;
-}
+    .container {
+      background-color: #87cefa;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+    }
 
-.update__btn {
-  color: #fa9770;
-  background-color: #fff;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 3px;
-  border: 2px solid #fa9770;
-  transition: 0.4s;
-  cursor: pointer;
-}
+    .card {
+      background-color: #fff;
+      width: 50vw;
+      padding: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+    }
 
-.update__btn:hover {
-  background-color: #fa9770;
-  color: #fff;
-}
+    .title {
+      font-weight: bold;
+      font-size: 24px;
+    }
 
-.delete__btn {
-  color: #71fadc;
-  background-color: #fff;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 3px;
-  border: 2px solid #71fadc;
-  transition: 0.4s;
-  cursor: pointer;
-}
+    .input-add {
+      width: 80%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      appearance: none;
+      font-size: 14px;
+      outline: none;
+    }
 
-.delete__btn:hover {
-  background-color: #71fadc;
-  color: #fff;
-}
+    table {
+      text-align: center;
+      width: 100%
+    }
 
-table tbody tr th {
-  font-weight: normal;
-}
-/**css ここまで */
+    tr {
+      height: 50px;
+    }
 
-@media screen and (max-width: 390px) {
-  .main {
-    margin: 15% 5% auto 5%;
-  }
-  h1 {
-    font-size: 20px;
-  }
-  .container {
-    width: 100%;
-  }
-  thead tr th:first-child {
-    display: none;
-  }
-  tbody tr th:first-child {
-    display: none;
-  }
-  .update__btn {
-    padding: 5px;
-  }
-  .delete__btn {
-    padding: 5px;
-  }
-  .add__btn {
-    padding: 5px;
-  }
-  table {
-    border-spacing: 24px 15px;
-  }
-  
-}
+    .input-update {
+      width: 90%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      appearance: none;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .button-add {
+      text-align: left;
+      border: 2px solid #fa9770;
+      font-size: 12px;
+      color: #fa9770;
+      background-color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.4s;
+      outline: none;
+    }
+
+    .button-add:hover {
+      background-color: #fa9770;
+      border-color: #fa9770;
+      color: #fff;
+    }
+
+    .button-update {
+      text-align: left;
+      border: 2px solid #fa9770;
+      font-size: 12px;
+      color: #fa9770;
+      background-color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.4s;
+      outline: none;
+    }
+
+    .button-update:hover {
+      background-color: #fa9770;
+      border-color: #fa9770;
+      color: #fff;
+    }
+
+    .button-delete {
+      text-align: left;
+      border: 2px solid #dc70fa;
+      font-size: 12px;
+      color: #dc70fa;
+      background-color: #fff;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.4s;
+      outline: none;
+    }
+
+    .button-delete:hover {
+      background-color: #dc70fa;
+      border-color: #dc70fa;
+      color: #fff;
+    }
+
+    @media screen and (max-width: 480px) {
+
+      .card {
+        width: 70vw;
+        top: 40%;
+      }
+
+      .title {
+        font-size: 16px;
+      }
+      
+      .button-add {
+        padding: 5px;
+        margin-left: 5px;
+      }
+
+      .button-update {
+        padding: 8px;
+        margin-left: 5px;
+        font-size: 10px;
+      }
+
+      .button-delete {
+        padding: 8px;
+        font-size: 10px;
+        margin-left: 5px;
+      }
+
+      th {
+        font-size: 14px;
+      }
+
+      th:first-child {
+        padding-right: 5px;
+      }
+
+      th:last-child {
+        padding-left: 5px;
+      }
+
+      .date {
+        font-size: 14px;
+        padding-right: 5px;
+      }
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="main">
-    <div class="container">
-      <h1>Todo List</h1>
-      <div class="todo__area">
-        @if ($errors->has('content'))
-          @foreach($errors->get('content') as $message)
-            {{$message}}<br>
-          @endforeach
-        @endif
-        <form action="/todo/create" method="POST" class="flex__item">
+  <div class="container">
+    <div class="card">
+      <p class="title mb-15">Todo List</p>
+      @if (count($errors) > 0)
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+      </ul>
+      @endif
+      <div class="todo">
+        <form action="/todo/create" method="post" class="flex between mb-30">
           @csrf
-          <input type="text" name="content" class="add__todo">
-          <button type="submit" class="add__btn" formaction="{{route('todo.create')}}">追加</button>
+          <input type="text" class="input-add" name="content" />
+          <input class="button-add" type="submit" value="追加" />
         </form>
-
         <table>
-          <thead>
-            <tr>
-              <th>作成日</th>
-              <th>タスク名</th>
-              <th>更新</th>
-              <th>削除</th>
-            </tr>
-          </thead>
+          <tr>
+            <th>作成日</th>
+            <th>タスク名</th>
+            <th>更新</th>
+            <th>削除</th>
+          </tr>
           @foreach($todos as $todo)
-          <tbody>
-            <tr>
-              <th>{{$todo->created_at->format('Y-m-d H:i:s')}}</th>
-              <th>
-                <form action="{{route('todo.update')}}" method="POST">
-                  @csrf
-                  <input type="text" name="content" value="{{$todo->content}}" class="update__todo">
-                </th>
-              <th>
-                  <input type="hidden" name="id" value="{{$todo->id}}">
-                  <button type="submit" class="update__btn">更新</button>
-                </form>
-              </th>
-              <th>
-                <form action="{{route('todo.delete')}}" method="POST">
-                  @csrf
-                  <input type="hidden" name="id" value="{{$todo->id}}">
-                  <button type="submit" class="delete__btn">削除</button>
-                </form>
-              </th>
-            </tr>
-          </tbody>
+          <tr>
+            <td class="date">
+              {{ $todo->created_at->format('m/d ') }}
+            </td>
+            <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="post">
+              @csrf
+              <td>
+                <input type="text" class="input-update" value="{{ $todo->content }}" name="content" />
+              </td>
+              <td>
+                <button class="button-update">更新</button>
+              </td>
+            </form>
+            <td>
+              <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="post">
+                @csrf
+                <button class="button-delete">削除</button>
+              </form>
+            </td>
+          </tr>
           @endforeach
         </table>
       </div>
     </div>
   </div>
+  </div>
 </body>
+
 </html>

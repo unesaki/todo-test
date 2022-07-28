@@ -3,40 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;  //DBとしてDBクラスを利用できる
 use App\Models\Todo;
-use App\Http\Requests\ClientRequest;
+use App\Http\Requests\TodoRequest;
+use Carbon\Carbon;
 
 class TodoController extends Controller
 {
-    public function index() //トップページの表示
+    public function index()
     {
-        $todos = Todo::orderBy('created_at', 'desc')->get();
-
+        $todos = Todo::all();
         return view('index', ['todos' => $todos]);
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $model->created_at)->format('Y-m-d');
     }
-
-    public function create(ClientRequest $request) //引数を変更してみる
+    public function create(TodoRequest $request)
     {
-        Todo::create([
-            'content' => $request->content
-        ]);
-
-        return redirect()->route('todo.init');
+        $form = $request->all();
+        unset($form['_token']);
+        Todo::create($form);
+        return redirect('/');
     }
-
-    public function update(ClientRequest $request)
+    public function update(TodoRequest $request)
     {
-        $todo = Todo::find($request->id); //　todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
-        
-        $todo->update(['content' => $request->content]); // ←ここが上手くいっていない
-        return redirect()->route('todo.init'); //画面を戻す処理
+        $form = $request->all();
+        unset($form['_token']);
+        Todo::find($request->id)->update($form);
+        return redirect('/');
     }
-
     public function delete(Request $request)
     {
-        $todo = Todo::find($request->id); //　todoテーブルから指定されたIDレコードを取ってくる　→　$todoへ
-        $todo->delete(); //上記のものを削除
-        return redirect()->route('todo.init'); //画面を戻す処理
+        Todo::find($request->id)->delete();
+        return redirect('/');
     }
 }
