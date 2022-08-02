@@ -318,14 +318,14 @@
       }
 
       .button-update {
-        padding: 6px;
+        padding: 8px;
         margin-left: 5px;
-        font-size: 8px;
+        font-size: 10px;
       }
 
       .button-delete {
-        padding: 6px;
-        font-size: 8px;
+        padding: 8px;
+        font-size: 10px;
         margin-left: 5px;
       }
 
@@ -385,13 +385,13 @@
                 <input type="text" class="input-update" value="{{ $todo->content }}" name="content" />
               </td>
               <td>
-                <button class="button-update">更新</button>
+                <button class="button-update">New</button>
               </td>
             </form>
             <td>
               <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="post">
                 @csrf
-                <button class="button-delete">削除</button>
+                <button class="button-delete">Del</button>
               </form>
             </td>
           </tr>
