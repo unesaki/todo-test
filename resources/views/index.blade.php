@@ -249,7 +249,7 @@
       background-color: #fff;
       font-weight: bold;
       padding: 8px 16px;
-      border-radius: 5px;
+      border-radius: 3px;
       cursor: pointer;
       transition: 0.4s;
       outline: none;
@@ -369,7 +369,7 @@
         </form>
         <table>
           <tr>
-            <th>作成日</th>
+            <th>日付</th>
             <th>タスク名</th>
             <th>更新</th>
             <th>削除</th>
