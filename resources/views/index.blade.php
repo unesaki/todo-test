@@ -318,14 +318,14 @@
       }
 
       .button-update {
-        padding: 8px;
+        padding: 6px;
         margin-left: 5px;
-        font-size: 10px;
+        font-size: 8px;
       }
 
       .button-delete {
-        padding: 8px;
-        font-size: 10px;
+        padding: 6px;
+        font-size: 8px;
         margin-left: 5px;
       }
 
